@@ -5,3 +5,4 @@ format: jb-book
 root: docs/home
 chapters:
 - file: docs/notebook
+- file: docs/story
