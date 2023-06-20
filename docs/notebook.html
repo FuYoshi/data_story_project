@@ -500,6 +500,14 @@ document.write(`
 <!--  -->TODO: describe dataset and how we preprocess them
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set to true to convert data to csv. False otherwise.</span>
+<span class="n">to_csv</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute data for bar graph with average CO2 emission per country</span>
 <span class="n">country_emission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">co2_2018</span><span class="p">,</span> <span class="n">co2_2019</span><span class="p">,</span> <span class="n">co2_2020</span><span class="p">,</span> <span class="n">co2_2021</span><span class="p">]:</span>
@@ -510,6 +518,9 @@ document.write(`
     <span class="c1"># Change mutliindex to single index.</span>
     <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="n">country_emission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">country_emission</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">to_csv</span><span class="p">:</span>
+    <span class="n">country_emission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;country_emission.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -522,7 +533,7 @@ document.write(`
     <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km) mean&quot;</span><span class="p">,</span>
     <span class="n">error_y</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km) std&quot;</span><span class="p">,</span>
     <span class="n">facet_col</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span>
-    <span class="n">facet_col_wrap</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">facet_col_wrap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;CO2 emission by passenger cars by country in EU from 2019-2021&quot;</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
     <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
@@ -549,6 +560,9 @@ document.write(`
     <span class="c1"># Change mutliindex to single index.</span>
     <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="n">country_emission_reduction</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">country_emission_reduction</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">to_csv</span><span class="p">:</span>
+    <span class="n">country_emission_reduction</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;country_emission_reduction.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -561,7 +575,7 @@ document.write(`
     <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Erwltp (g/km) mean&quot;</span><span class="p">,</span>
     <span class="n">error_y</span><span class="o">=</span><span class="s2">&quot;Erwltp (g/km) std&quot;</span><span class="p">,</span>
     <span class="n">facet_col</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span>
-    <span class="n">facet_col_wrap</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">facet_col_wrap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;CO2 emission reduction by country in EU from 2019-2021&quot;</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
     <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
@@ -577,9 +591,18 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pie chart with average CO2 emission per fuel type.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute pie chart with average CO2 emission per fuel type.</span>
 <span class="n">ft_mean_emission</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">co2_2021</span><span class="p">[</span><span class="s2">&quot;Ft&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">())[</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
+<span class="k">if</span> <span class="n">to_csv</span><span class="p">:</span>
+    <span class="n">ft_mean_emission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;ft_mean_emission.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot pie chart with average CO2 emission per fuel type.</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">ft_mean_emission</span><span class="p">,</span>
     <span class="n">names</span><span class="o">=</span><span class="n">ft_mean_emission</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
     <span class="n">values</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span>
@@ -600,15 +623,25 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Average emission in EU.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute average emission in EU.</span>
 <span class="n">years</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">mean_emission</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">co2_2017</span><span class="p">,</span> <span class="n">co2_2018</span><span class="p">,</span> <span class="n">co2_2019</span><span class="p">,</span> <span class="n">co2_2020</span><span class="p">,</span> <span class="n">co2_2021</span><span class="p">]:</span>
     <span class="n">mean_emission</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
     <span class="n">years</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="n">line_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="n">years</span><span class="p">,</span> <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="n">mean_emission</span><span class="p">})</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">line_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Average emission over the years in EU.&quot;</span><span class="p">)</span>
+<span class="n">eu_emission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="n">years</span><span class="p">,</span> <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="n">mean_emission</span><span class="p">})</span>
+
+<span class="k">if</span> <span class="n">to_csv</span><span class="p">:</span>
+    <span class="n">eu_emission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;eu_emission.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot average emission in EU over the years.</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">eu_emission</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Average emission over the years in EU.&quot;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -620,12 +653,9 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="links">
 <h1>Links<a class="headerlink" href="#links" title="Permalink to this heading">#</a></h1>
-<p>Cleaned dataset:</p>
-<p><a class="reference external" href="https://www.kaggle.com/datasets/yoshifu/co2-emission-from-cars-2015-2021">https://www.kaggle.com/datasets/yoshifu/co2-emission-from-cars-2015-2021</a></p>
-<p>GitHub repository:</p>
-<p><a class="github reference external" href="https://github.com/FuYoshi/data_story_project">FuYoshi/data_story_project</a></p>
-<p>Original dataset:</p>
-<p><a class="reference external" href="https://www.eea.europa.eu/data-and-maps/data/co2-cars-emission-18">https://www.eea.europa.eu/data-and-maps/data/co2-cars-emission-18</a></p>
+<p>Cleaned dataset: <a class="reference external" href="https://www.kaggle.com/datasets/yoshifu/co2-emission-from-cars-2015-2021">https://www.kaggle.com/datasets/yoshifu/co2-emission-from-cars-2015-2021</a></p>
+<p>GitHub repository: <a class="github reference external" href="https://github.com/FuYoshi/data_story_project">FuYoshi/data_story_project</a></p>
+<p>Original dataset: <a class="reference external" href="https://www.eea.europa.eu/data-and-maps/data/co2-cars-emission-18">https://www.eea.europa.eu/data-and-maps/data/co2-cars-emission-18</a></p>
 </section>
 
     <script type="text/x-thebe-config">
