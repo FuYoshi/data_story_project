@@ -437,56 +437,54 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">co2_2020</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">co2_2021</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunk_container</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">co2_2015</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2015</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2015</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">co2_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2016</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2016</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">18</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">co2_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2016</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2016</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">co2_2017</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2017</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2017</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">18</span> <span class="n">co2_2018</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2018</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2018</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">co2_2019</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2019</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2019</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">co2_2020</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2020</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2020</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1624,</span> in <span class="ni">TextFileReader.__next__</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1622</span> <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1623</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1624</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_chunk</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1625</span>     <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1626</span>         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/reshape/concat.py:385,</span> in <span class="ni">concat</span><span class="nt">(objs, axis, join, ignore_index, keys, levels, names, verify_integrity, sort, copy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span>     <span class="n">copy</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">372</span> <span class="n">op</span> <span class="o">=</span> <span class="n">_Concatenator</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">373</span>     <span class="n">objs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">374</span>     <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">382</span>     <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">385</span> <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">get_result</span><span class="p">()</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1733,</span> in <span class="ni">TextFileReader.get_chunk</span><span class="nt">(self, size)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1731</span>         <span class="k">raise</span> <span class="ne">StopIteration</span>
-<span class="g g-Whitespace">   </span><span class="mi">1732</span>     <span class="n">size</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nrows</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currow</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1733</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/reshape/concat.py:616,</span> in <span class="ni">_Concatenator.get_result</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span>             <span class="n">indexers</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj_labels</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">(</span><span class="n">new_labels</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span>     <span class="n">mgrs_indexers</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">obj</span><span class="o">.</span><span class="n">_mgr</span><span class="p">,</span> <span class="n">indexers</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">616</span> <span class="n">new_data</span> <span class="o">=</span> <span class="n">concatenate_managers</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span>     <span class="n">mgrs_indexers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_axes</span><span class="p">,</span> <span class="n">concat_axis</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">bm_axis</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">copy</span>
+<span class="g g-Whitespace">    </span><span class="mi">618</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">using_copy_on_write</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">620</span>     <span class="n">new_data</span><span class="o">.</span><span class="n">_consolidate_inplace</span><span class="p">()</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1721,</span> in <span class="ni">TextFileReader.read</span><span class="nt">(self, nrows)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1718</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1719</span>         <span class="n">new_rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1721</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">col_dict</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1723</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_currow</span> <span class="o">+=</span> <span class="n">new_rows</span>
-<span class="g g-Whitespace">   </span><span class="mi">1724</span> <span class="k">return</span> <span class="n">df</span>
+<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/internals/concat.py:242,</span> in <span class="ni">concatenate_managers</span><span class="nt">(mgrs_indexers, axes, concat_axis, copy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">240</span>     <span class="n">fastpath</span> <span class="o">=</span> <span class="n">blk</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">values</span><span class="o">.</span><span class="n">dtype</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">242</span>     <span class="n">values</span> <span class="o">=</span> <span class="n">_concatenate_join_units</span><span class="p">(</span><span class="n">join_units</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span>     <span class="n">fastpath</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">245</span> <span class="k">if</span> <span class="n">fastpath</span><span class="p">:</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/frame.py:709,</span> in <span class="ni">DataFrame.__init__</span><span class="nt">(self, data, index, columns, dtype, copy)</span>
-<span class="g g-Whitespace">    </span><span class="mi">703</span>     <span class="n">mgr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_mgr</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">704</span>         <span class="n">data</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="n">index</span><span class="p">,</span> <span class="s2">&quot;columns&quot;</span><span class="p">:</span> <span class="n">columns</span><span class="p">},</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">707</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">708</span>     <span class="c1"># GH#38939 de facto copy defaults to False only in non-dict cases</span>
-<span class="ne">--&gt; </span><span class="mi">709</span>     <span class="n">mgr</span> <span class="o">=</span> <span class="n">dict_to_mgr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="n">manager</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">710</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ma</span><span class="o">.</span><span class="n">MaskedArray</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">711</span>     <span class="kn">from</span> <span class="nn">numpy.ma</span> <span class="kn">import</span> <span class="n">mrecords</span>
+<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/internals/concat.py:613,</span> in <span class="ni">_concatenate_join_units</span><span class="nt">(join_units, copy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">610</span>     <span class="n">concat_values</span> <span class="o">=</span> <span class="n">ensure_block_shape</span><span class="p">(</span><span class="n">concat_values</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">613</span>     <span class="n">concat_values</span> <span class="o">=</span> <span class="n">concat_compat</span><span class="p">(</span><span class="n">to_concat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">615</span> <span class="k">return</span> <span class="n">concat_values</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/internals/construction.py:481,</span> in <span class="ni">dict_to_mgr</span><span class="nt">(data, index, columns, dtype, typ, copy)</span>
-<span class="g g-Whitespace">    </span><span class="mi">477</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">478</span>         <span class="c1"># dtype check to exclude e.g. range objects, scalars</span>
-<span class="g g-Whitespace">    </span><span class="mi">479</span>         <span class="n">arrays</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arrays</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">481</span> <span class="k">return</span> <span class="n">arrays_to_mgr</span><span class="p">(</span><span class="n">arrays</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="n">typ</span><span class="p">,</span> <span class="n">consolidate</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
+<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/dtypes/concat.py:117,</span> in <span class="ni">concat_compat</span><span class="nt">(to_concat, axis, ea_compat_axis)</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="n">target_dtype</span> <span class="o">=</span> <span class="n">np_find_common_type</span><span class="p">(</span><span class="o">*</span><span class="n">dtypes</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">117</span> <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">to_concat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span> <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">in</span> <span class="n">kinds</span> <span class="ow">and</span> <span class="n">result</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>     <span class="c1"># GH#39817 cast to object instead of casting bools to numeric</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/internals/construction.py:153,</span> in <span class="ni">arrays_to_mgr</span><span class="nt">(arrays, columns, index, dtype, verify_integrity, typ, consolidate)</span>
-<span class="g g-Whitespace">    </span><span class="mi">150</span> <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="n">columns</span><span class="p">,</span> <span class="n">index</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">152</span> <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;block&quot;</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">153</span>     <span class="k">return</span> <span class="n">create_block_manager_from_column_arrays</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">154</span>         <span class="n">arrays</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">consolidate</span><span class="o">=</span><span class="n">consolidate</span><span class="p">,</span> <span class="n">refs</span><span class="o">=</span><span class="n">refs</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">156</span> <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;array&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">157</span>     <span class="k">return</span> <span class="n">ArrayManager</span><span class="p">(</span><span class="n">arrays</span><span class="p">,</span> <span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="p">])</span>
+<span class="nn">File &lt;__array_function__ internals&gt;:200,</span> in <span class="ni">concatenate</span><span class="nt">(*args, **kwargs)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -670,28 +668,6 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Plot bar graph with average CO2 emission reduced by innovative technologies per country</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">country_emission</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km) mean&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">error_y</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km) std&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">facet_col</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">facet_col_wrap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Visualisatie 2: Gemiddelde CO2-uitstoot vermindering vanwege innovatieve technologieën per land in de EU tussen 2019 en 2021&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="s2">&quot;Ewltp (g/km) mean&quot;</span><span class="p">:</span> <span class="s2">&quot;CO2 emission WLTP (g/km)&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="p">},</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">fig</span><span class="o">.</span><span class="n">for_each_annotation</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;Jaar&#39;</span><span class="p">)))</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;px&#39; is not defined
-</pre></div>
-</div>
 </div>
 </div>
 <p>Caption</p>
@@ -812,11 +788,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3538/2340945451.py:5: DtypeWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6466/2340945451.py:5: DtypeWarning:
 
 Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
 
-/tmp/ipykernel_3538/2340945451.py:5: DtypeWarning:
+/tmp/ipykernel_6466/2340945451.py:5: DtypeWarning:
 
 Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
 </pre></div>
@@ -866,11 +842,11 @@ Columns (0) have mixed types. Specify dtype option on import or set low_memory=F
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3538/4033288453.py:5: DtypeWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6466/4033288453.py:5: DtypeWarning:
 
 Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
 
-/tmp/ipykernel_3538/4033288453.py:5: DtypeWarning:
+/tmp/ipykernel_6466/4033288453.py:5: DtypeWarning:
 
 Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
 </pre></div>
@@ -938,16 +914,47 @@ Columns (0) have mixed types. Specify dtype option on import or set low_memory=F
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_emission_per_ft</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Ft&#39;</span><span class="p">)[</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">total_emission_per_ft</span> <span class="o">=</span> <span class="n">total_emission_per_ft</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_emission_per_ft</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Ft&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">]})</span>
+<span class="n">total_emission_per_ft</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">total_emission_per_ft</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="n">total_emission_per_ft</span> <span class="o">=</span> <span class="n">total_emission_per_ft</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;Ewltp (g/km) sum&quot;</span><span class="p">:</span> <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Ewltp (g/km) size&quot;</span><span class="p">:</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="n">total_emission_per_ft</span> <span class="o">=</span> <span class="n">total_emission_per_ft</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">total_emission_per_ft</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;total_emission_per_ft.csv&quot;</span><span class="p">)</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">total_emission_per_ft</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Ft&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Totale CO2-emissie per brandstoftype in 2021&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total_emission_per_ft</span><span class="p">)</span>
+
+<span class="c1"># Plot settings</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">total_emission_per_ft</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Ft&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Totale CO2-uitstoot van personenauto&#39;s in de EU per brandstof type (2021)&quot;</span><span class="p">,</span>
+    <span class="n">custom_data</span><span class="o">=</span><span class="p">[</span><span class="n">total_emission_per_ft</span><span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">]],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="s2">&quot;CO2 emissie in WLTP (g/km)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Ft&quot;</span><span class="p">:</span> <span class="s2">&quot;Brandstof type&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">hovertemplate</span><span class="o">=</span><span class="s2">&quot;CO2 emissie in WLTP (g/km)=%</span><span class="si">{y}</span><span class="s2">&lt;br&gt;Aantal auto&#39;s=%</span><span class="si">{customdata[0]}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                Ft  Ewltp (g/km)        n
+0           petrol   735097381.0  5480068
+1           diesel   322874600.0  2237878
+2  petrol-electric    32925459.0   832367
+3              lpg    26000186.0   222429
+4               ng     4100930.0    39123
+5  diesel-electric     1984472.0    55304
+6              e85     1150701.0     7210
+7    ng-biomethane      862505.0     7630
+8            other      220954.0     1801
+9         electric           0.0   980563
+</pre></div>
+</div>
 </div>
 </div>
 </section>
