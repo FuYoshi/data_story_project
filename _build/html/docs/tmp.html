@@ -400,6 +400,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
+<span class="kn">from</span> <span class="nn">plotly.subplots</span> <span class="kn">import</span> <span class="n">make_subplots</span>
 <span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
 <span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -412,7 +413,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieve dataset data.</span>
 <span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="n">dtypes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Country&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Mk&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Cn&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;m (kg)&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Enedc (g/km)&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;W (mm)&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Ft&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Ernedc (g/km)&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Erwltp (g/km)&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">}</span>
-<span class="n">chunk_container</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;CO2_data.csv&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">)</span>
+<span class="n">chunk_container</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;CO2_data2.csv&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">)</span>
 
 <span class="c1"># Split the dataset based on year.</span>
 <span class="n">co2_2015</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -437,54 +438,24 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">18</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">co2_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2016</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2016</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">19</span>
 <span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">co2_2017</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2017</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2017</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">18</span> <span class="n">co2_2018</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2018</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2018</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">co2_2019</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2019</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2019</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">co2_2018</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2018</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2018</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">19</span> <span class="n">co2_2019</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2019</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2019</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">co2_2020</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2020</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2020</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">co2_2021</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2021</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2021</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/reshape/concat.py:385,</span> in <span class="ni">concat</span><span class="nt">(objs, axis, join, ignore_index, keys, levels, names, verify_integrity, sort, copy)</span>
-<span class="g g-Whitespace">    </span><span class="mi">370</span>     <span class="n">copy</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">    </span><span class="mi">372</span> <span class="n">op</span> <span class="o">=</span> <span class="n">_Concatenator</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">373</span>     <span class="n">objs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">374</span>     <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span>
+<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/frame.py:3713,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3703</span>     <span class="n">new_mgr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">reindex_indexer</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3704</span>         <span class="n">new_axis</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">3705</span>         <span class="n">indexer</span><span class="p">,</span>
    <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">382</span>     <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">383</span> <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">385</span> <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">get_result</span><span class="p">()</span>
-
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/reshape/concat.py:616,</span> in <span class="ni">_Concatenator.get_result</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">612</span>             <span class="n">indexers</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj_labels</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">(</span><span class="n">new_labels</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">614</span>     <span class="n">mgrs_indexers</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">obj</span><span class="o">.</span><span class="n">_mgr</span><span class="p">,</span> <span class="n">indexers</span><span class="p">))</span>
-<span class="ne">--&gt; </span><span class="mi">616</span> <span class="n">new_data</span> <span class="o">=</span> <span class="n">concatenate_managers</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">617</span>     <span class="n">mgrs_indexers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_axes</span><span class="p">,</span> <span class="n">concat_axis</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">bm_axis</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">copy</span>
-<span class="g g-Whitespace">    </span><span class="mi">618</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">using_copy_on_write</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">620</span>     <span class="n">new_data</span><span class="o">.</span><span class="n">_consolidate_inplace</span><span class="p">()</span>
-
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/internals/concat.py:242,</span> in <span class="ni">concatenate_managers</span><span class="nt">(mgrs_indexers, axes, concat_axis, copy)</span>
-<span class="g g-Whitespace">    </span><span class="mi">240</span>     <span class="n">fastpath</span> <span class="o">=</span> <span class="n">blk</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">values</span><span class="o">.</span><span class="n">dtype</span>
-<span class="g g-Whitespace">    </span><span class="mi">241</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">242</span>     <span class="n">values</span> <span class="o">=</span> <span class="n">_concatenate_join_units</span><span class="p">(</span><span class="n">join_units</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">243</span>     <span class="n">fastpath</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">    </span><span class="mi">245</span> <span class="k">if</span> <span class="n">fastpath</span><span class="p">:</span>
-
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/internals/concat.py:613,</span> in <span class="ni">_concatenate_join_units</span><span class="nt">(join_units, copy)</span>
-<span class="g g-Whitespace">    </span><span class="mi">610</span>     <span class="n">concat_values</span> <span class="o">=</span> <span class="n">ensure_block_shape</span><span class="p">(</span><span class="n">concat_values</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">612</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">613</span>     <span class="n">concat_values</span> <span class="o">=</span> <span class="n">concat_compat</span><span class="p">(</span><span class="n">to_concat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">615</span> <span class="k">return</span> <span class="n">concat_values</span>
-
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/dtypes/concat.py:117,</span> in <span class="ni">concat_compat</span><span class="nt">(to_concat, axis, ea_compat_axis)</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="n">target_dtype</span> <span class="o">=</span> <span class="n">np_find_common_type</span><span class="p">(</span><span class="o">*</span><span class="n">dtypes</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">117</span> <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">to_concat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">118</span> <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">in</span> <span class="n">kinds</span> <span class="ow">and</span> <span class="n">result</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">]:</span>
-<span class="g g-Whitespace">    </span><span class="mi">119</span>     <span class="c1"># GH#39817 cast to object instead of casting bools to numeric</span>
-<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nn">File &lt;__array_function__ internals&gt;:200,</span> in <span class="ni">concatenate</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3709</span>         <span class="n">only_slice</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">3710</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3711</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constructor</span><span class="p">(</span><span class="n">new_mgr</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3713</span> <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3714</span>     <span class="n">check_dict_or_set_indexers</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3715</span>     <span class="n">key</span> <span class="o">=</span> <span class="n">lib</span><span class="o">.</span><span class="n">item_from_zerodim</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -507,162 +478,70 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute data for bar graph with average CO2 emission per country</span>
 <span class="n">country_emission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">co2_2018</span><span class="p">,</span> <span class="n">co2_2019</span><span class="p">,</span> <span class="n">co2_2020</span><span class="p">,</span> <span class="n">co2_2021</span><span class="p">]:</span>
+<span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">co2_2015</span><span class="p">,</span> <span class="n">co2_2016</span><span class="p">,</span> <span class="n">co2_2017</span><span class="p">,</span> <span class="n">co2_2018</span><span class="p">,</span> <span class="n">co2_2019</span><span class="p">,</span> <span class="n">co2_2020</span><span class="p">,</span> <span class="n">co2_2021</span><span class="p">]:</span>
     <span class="c1"># Get subset of columns.</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">]]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span> <span class="s2">&quot;Erwltp (g/km)&quot;</span><span class="p">]]</span>
     <span class="c1"># Group by country and year and compute mean and std.</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">]})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-    <span class="c1"># Change mutliindex to single index.</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">],</span> <span class="s2">&quot;Erwltp (g/km)&quot;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
     <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="c1"># df = df.groupby([&quot;Country&quot;, &quot;year&quot;]).mean().reset_index()</span>
     <span class="n">country_emission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">country_emission</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">to_csv</span><span class="p">:</span>
     <span class="n">country_emission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;country_emission.csv&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">country_emission</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Country  year  Ewltp (g/km) mean  Ewltp (g/km) std
-0       AT  2018         145.972987         47.059240
-1       BE  2018         146.957196         27.408963
-2       BG  2018         149.522771         41.876921
-3       CY  2018         143.808365         30.649560
-4       CZ  2018         159.296766         36.592046
-5       DE  2018         154.979487         40.299402
-6       DK  2018         139.274798         25.036228
-7       EE  2018         157.704236         27.920213
-8       ES  2018         146.405005         26.798571
-9       FI  2018         140.103806         37.205318
-10      FR  2018         138.370309         27.845793
-11      GB  2018         151.319423         37.638863
-12      GR  2018         136.292338         18.582752
-13      HR  2018         141.044349         24.246063
-14      HU  2018         150.811770         38.868325
-15      IE  2018         137.711411         25.155394
-16      IS  2018         120.500000         71.624866
-17      IT  2018         144.603030         22.784068
-18      LT  2018         156.358866         30.228215
-19      LU  2018         160.891547         37.191801
-20      LV  2018         154.306148         32.446018
-21      MT  2018         127.417671         27.181731
-22      NL  2018         139.368141         35.719830
-23      PL  2018         157.805782         28.390030
-24      PT  2018         133.014070         33.971871
-25      RO  2018         147.492357         28.795879
-26      SE  2018         147.504642         51.485501
-27      SI  2018         145.227010         31.487925
-28      SK  2018         157.949519         31.074187
-   Country  year  Ewltp (g/km) mean  Ewltp (g/km) std
-0       AT  2019         116.516653         58.694783
-1       BE  2019         117.273422         49.605467
-2       BG  2019         139.812421         43.365207
-3       CY  2019         145.777238         32.805484
-4       CZ  2019         135.947299         36.437479
-5       DE  2019         113.794163         66.043429
-6       DK  2019          93.090959         55.835936
-7       EE  2019         142.576896         38.865539
-8       ES  2019         126.814791         35.646852
-9       FI  2019          98.346144         54.259324
-10      FR  2019         108.878985         45.587939
-11      GR  2019         119.720278         31.169043
-12      HR  2019         128.986752         31.643349
-13      HU  2019         133.002959         43.349131
-14      IE  2019         113.049346         44.145941
-15      IS  2019          81.453661         74.787377
-16      IT  2019         124.627668         36.214268
-17      LT  2019         135.744463         41.619450
-18      LU  2019         124.157231         65.660278
-19      LV  2019         142.573546         41.097105
-20      MT  2019         104.212814         46.513735
-21      NL  2019          95.305243         57.492488
-22      NO  2019          28.242892         50.115625
-23      PL  2019         136.214753         34.896209
-24      PT  2019         107.297623         47.433897
-25      RO  2019         126.565572         42.685877
-26      SE  2019          90.259065         66.649126
-27      SI  2019         133.912345         35.514496
-28      SK  2019         139.191058         35.277840
-   Country  year  Ewltp (g/km) mean  Ewltp (g/km) std
-0       AT  2020         116.516653         58.694783
-1       BE  2020         117.273422         49.605467
-2       BG  2020         139.812421         43.365207
-3       CY  2020         145.777238         32.805484
-4       CZ  2020         135.947299         36.437479
-5       DE  2020         113.794163         66.043429
-6       DK  2020          93.090959         55.835936
-7       EE  2020         142.576896         38.865539
-8       ES  2020         126.814791         35.646852
-9       FI  2020          98.346144         54.259324
-10      FR  2020         108.878985         45.587939
-11      GR  2020         119.720278         31.169043
-12      HR  2020         128.986752         31.643349
-13      HU  2020         133.002959         43.349131
-14      IE  2020         113.049346         44.145941
-15      IS  2020          81.453661         74.787377
-16      IT  2020         124.627668         36.214268
-17      LT  2020         135.744463         41.619450
-18      LU  2020         124.157231         65.660278
-19      LV  2020         142.573546         41.097105
-20      MT  2020         104.212814         46.513735
-21      NL  2020          95.305243         57.492488
-22      NO  2020          28.242892         50.115625
-23      PL  2020         136.214753         34.896209
-24      PT  2020         107.297623         47.433897
-25      RO  2020         126.565572         42.685877
-26      SE  2020          90.259065         66.649126
-27      SI  2020         133.912345         35.514496
-28      SK  2020         139.191058         35.277840
-   Country  year  Ewltp (g/km) mean  Ewltp (g/km) std
-0       AT  2021         116.516653         58.694783
-1       BE  2021         117.273422         49.605467
-2       BG  2021         139.812421         43.365207
-3       CY  2021         145.777238         32.805484
-4       CZ  2021         135.947299         36.437479
-5       DE  2021         113.794163         66.043429
-6       DK  2021          93.090959         55.835936
-7       EE  2021         142.576896         38.865539
-8       ES  2021         126.814791         35.646852
-9       FI  2021          98.346144         54.259324
-10      FR  2021         108.878985         45.587939
-11      GR  2021         119.720278         31.169043
-12      HR  2021         128.986752         31.643349
-13      HU  2021         133.002959         43.349131
-14      IE  2021         113.049346         44.145941
-15      IS  2021          81.453661         74.787377
-16      IT  2021         124.627668         36.214268
-17      LT  2021         135.744463         41.619450
-18      LU  2021         124.157231         65.660278
-19      LV  2021         142.573546         41.097105
-20      MT  2021         104.212814         46.513735
-21      NL  2021          95.305243         57.492488
-22      NO  2021          28.242892         50.115625
-23      PL  2021         136.214753         34.896209
-24      PT  2021         107.297623         47.433897
-25      RO  2021         126.565572         42.685877
-26      SE  2021          90.259065         66.649126
-27      SI  2021         133.912345         35.514496
-28      SK  2021         139.191058         35.277840
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Country  year  Ewltp (g/km) mean  Ewltp (g/km) sum  Erwltp (g/km) mean
+0        AT  2015         167.352565         9610053.7            1.740408
+1        BE  2015         168.882209         4642909.7            2.788953
+2        BG  2015         179.490853          665193.1            3.076667
+3        CY  2015         173.255686          251394.0                 NaN
+4        CZ  2015         182.923737         2269534.8            1.707770
+..      ...   ...                ...               ...                 ...
+195      PT  2021         107.297623        15676290.0            1.515715
+196      RO  2021         126.562358        15296959.4            1.372131
+197      SE  2021          90.271425        26249034.6            1.361123
+198      SI  2021         133.912345         6943489.0            1.573788
+199      SK  2021         139.223296        10530989.3            1.396190
+
+[200 rows x 5 columns]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot bar graph with average CO2 emission reduced by innovative technologies per country</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">country_emission</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km) mean&quot;</span><span class="p">,</span>
-    <span class="n">error_y</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km) std&quot;</span><span class="p">,</span>
-    <span class="n">facet_col</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span>
-    <span class="n">facet_col_wrap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Visualisatie 2: Gemiddelde CO2-uitstoot vermindering vanwege innovatieve technologieën per land in de EU tussen 2019 en 2021&quot;</span><span class="p">,</span>
-    <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
-    <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;Ewltp (g/km) mean&quot;</span><span class="p">:</span> <span class="s2">&quot;CO2 emission WLTP (g/km)&quot;</span>
-    <span class="p">},</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">year</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">][</span><span class="s2">&quot;Country&quot;</span><span class="p">],</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">][</span><span class="s2">&quot;Ewltp (g/km) mean&quot;</span><span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">year</span><span class="p">,</span>
+        <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span>
+    <span class="p">))</span>
+
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2021</span><span class="p">)</span>
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2020</span><span class="p">)</span>
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2019</span><span class="p">)</span>
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2018</span><span class="p">)</span>
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2017</span><span class="p">)</span>
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2016</span><span class="p">)</span>
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2015</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">barmode</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+    <span class="n">legend_traceorder</span><span class="o">=</span><span class="s2">&quot;reversed&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Visualisatie 1: CO2-uitstoot door personenauto&#39;s per land in de EU tussen 2015 en 2021&quot;</span><span class="p">,</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;CO2 emissie in WLTP (g/km)&quot;</span><span class="p">,</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Landcode&quot;</span><span class="p">,</span>
+    <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Jaar&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">for_each_annotation</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;Jaar&#39;</span><span class="p">)))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -673,37 +552,32 @@ document.write(`
 <p>Caption</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute data for bar graph with average CO2 emission reduced by innovative technologies per country</span>
-<span class="n">country_emission_reduction</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">co2_2019</span><span class="p">,</span> <span class="n">co2_2020</span><span class="p">,</span> <span class="n">co2_2021</span><span class="p">]:</span>
-    <span class="c1"># Get subset of columns.</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;Erwltp (g/km)&quot;</span><span class="p">]]</span>
-    <span class="c1"># Group by country and year and compute mean and std.</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Erwltp (g/km)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">]})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-    <span class="c1"># Change mutliindex to single index.</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-    <span class="n">country_emission_reduction</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">country_emission_reduction</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">to_csv</span><span class="p">:</span>
-    <span class="n">country_emission_reduction</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;country_emission_reduction.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot bar graph with average CO2 emission reduced by innovative technologies per country</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">country_emission_reduction</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Erwltp (g/km) mean&quot;</span><span class="p">,</span>
-    <span class="n">error_y</span><span class="o">=</span><span class="s2">&quot;Erwltp (g/km) std&quot;</span><span class="p">,</span>
-    <span class="n">facet_col</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span>
-    <span class="n">facet_col_wrap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;CO2 emission reduction by country in EU from 2019-2021&quot;</span><span class="p">,</span>
-    <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
-    <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;Erwltp (g/km) mean&quot;</span><span class="p">:</span> <span class="s2">&quot;CO2 emission reduction WLTP (g/km)&quot;</span>
-    <span class="p">},</span>
+<span class="k">def</span> <span class="nf">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">year</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">][</span><span class="s2">&quot;Country&quot;</span><span class="p">],</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">][</span><span class="s2">&quot;Erwltp (g/km) mean&quot;</span><span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">year</span><span class="p">,</span>
+        <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span>
+    <span class="p">))</span>
+
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2021</span><span class="p">)</span>
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2020</span><span class="p">)</span>
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2019</span><span class="p">)</span>
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2018</span><span class="p">)</span>
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2017</span><span class="p">)</span>
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2016</span><span class="p">)</span>
+<span class="n">_add_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">country_emission</span><span class="p">,</span> <span class="mi">2015</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">barmode</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+    <span class="n">legend_traceorder</span><span class="o">=</span><span class="s2">&quot;reversed&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Visualisatie 2: Gemiddelde CO2-uitstoot vermindering vanwege innovatieve technologieën per land in de EU tussen 2019 en 2021 &quot;</span><span class="p">,</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;CO2 emissie in WLTP (g/km)&quot;</span><span class="p">,</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Landcode&quot;</span><span class="p">,</span>
+    <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Jaar&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -746,26 +620,29 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute average emission in EU.</span>
-<span class="n">years</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">mean_emission</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">co2_2017</span><span class="p">,</span> <span class="n">co2_2018</span><span class="p">,</span> <span class="n">co2_2019</span><span class="p">,</span> <span class="n">co2_2020</span><span class="p">,</span> <span class="n">co2_2021</span><span class="p">]:</span>
-    <span class="n">mean_emission</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-    <span class="n">years</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">specs</span><span class="o">=</span><span class="p">[[{</span><span class="s2">&quot;secondary_y&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}]])</span>
 
-<span class="n">eu_emission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="n">years</span><span class="p">,</span> <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="n">mean_emission</span><span class="p">})</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">2017</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">]</span>
+<span class="n">eu_emission</span> <span class="o">=</span> <span class="n">country_emission</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">to_csv</span><span class="p">:</span>
-    <span class="n">eu_emission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;eu_emission.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot average emission in EU over the years.</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">eu_emission</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Average emission over the years in EU.&quot;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">years</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">eu_emission</span><span class="p">[</span><span class="s2">&quot;Ewltp (g/km) mean&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Gemiddelde&quot;</span><span class="p">),</span>
+    <span class="n">secondary_y</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">years</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">eu_emission</span><span class="p">[</span><span class="s2">&quot;Ewltp (g/km) sum&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Totaal&quot;</span><span class="p">),</span>
+    <span class="n">secondary_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;CO2 emissie in de EU&quot;</span><span class="p">,</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Jaar&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;Gemiddelde CO2 emissie in WLTP (g/km)&quot;</span><span class="p">,</span> <span class="n">secondary_y</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;Totale CO2 emissie in WLTP (g/km)&quot;</span><span class="p">,</span> <span class="n">secondary_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -788,11 +665,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6466/2340945451.py:5: DtypeWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_37088/2340945451.py:5: DtypeWarning:
 
 Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
 
-/tmp/ipykernel_6466/2340945451.py:5: DtypeWarning:
+/tmp/ipykernel_37088/2340945451.py:5: DtypeWarning:
 
 Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
 </pre></div>
@@ -842,11 +719,11 @@ Columns (0) have mixed types. Specify dtype option on import or set low_memory=F
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6466/4033288453.py:5: DtypeWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_37088/4033288453.py:5: DtypeWarning:
 
 Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
 
-/tmp/ipykernel_6466/4033288453.py:5: DtypeWarning:
+/tmp/ipykernel_37088/4033288453.py:5: DtypeWarning:
 
 Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
 </pre></div>
@@ -943,15 +820,15 @@ Columns (0) have mixed types. Specify dtype option on import or set low_memory=F
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                Ft  Ewltp (g/km)        n
-0           petrol   735097381.0  5480068
-1           diesel   322874600.0  2237878
-2  petrol-electric    32925459.0   832367
-3              lpg    26000186.0   222429
-4               ng     4100930.0    39123
-5  diesel-electric     1984472.0    55304
+0           petrol   735257118.5  5469354
+1           diesel   322991801.5  2235397
+2  petrol-electric    32944236.2   786478
+3              lpg    26007982.1   214743
+4               ng     4101197.8    39088
+5  diesel-electric     1985205.2    50760
 6              e85     1150701.0     7210
-7    ng-biomethane      862505.0     7630
-8            other      220954.0     1801
+7    ng-biomethane      864080.6     7629
+8            other      220954.0     1795
 9         electric           0.0   980563
 </pre></div>
 </div>

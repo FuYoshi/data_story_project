@@ -131,6 +131,7 @@ def _filter(df: pd.DataFrame):
     df = _filter_Ft(df)
     df = _filter_Mk(df)
     df = _filter_Cn(df)
+    df = _convert_nedc(df)
     return df
 
 
@@ -176,6 +177,20 @@ def _filter_Cn(df: pd.DataFrame):
     Convert commercial names to uppercase and strip them.
     """
     df["Cn"] = df["Cn"].str.upper().str.strip()
+    return df
+
+
+def _convert_nedc(df: pd.DataFrame):
+    """
+    If there is no WLTP data, convert NEDC to WLTP using conversion factor.
+
+    Note that the new value is an estimation and not absolute.
+    """
+    conversion_factor = 1.3
+    newcol = df["Enedc (g/km)"] * conversion_factor
+    df["Ewltp (g/km)"] = newcol.where(df["Ewltp (g/km)"].isna(), other=df['Ewltp (g/km)'])
+    newcol = df["Ernedc (g/km)"] * conversion_factor
+    df["Erwltp (g/km)"] = newcol.where(df["Erwltp (g/km)"].isna(), other=df['Erwltp (g/km)'])
     return df
 
 
