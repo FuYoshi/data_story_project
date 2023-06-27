@@ -546,15 +546,18 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot settings</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">cols</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span> <span class="n">x_title</span><span class="o">=</span><span class="s2">&quot;Landcode&quot;</span><span class="p">,</span> <span class="n">y_title</span><span class="o">=</span><span class="s2">&quot;CO2 emissie in WLTP (g/km)&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">2017</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">]:</span>
+    <span class="c1"># Find index of &#39;IE&#39; to split the countries on (&#39;IE&#39; is often in the middle).</span>
     <span class="n">country_emission_year</span> <span class="o">=</span> <span class="n">country_emission</span><span class="p">[</span><span class="n">country_emission</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">year</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
     <span class="n">split_index</span> <span class="o">=</span> <span class="n">country_emission_year</span><span class="p">[</span><span class="n">country_emission_year</span><span class="p">[</span><span class="s2">&quot;Country&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;IE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
     <span class="n">country_emission_split</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">country_emission</span><span class="p">[</span><span class="n">country_emission</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">year</span><span class="p">],</span> <span class="n">split_index</span><span class="p">)</span>
 
+    <span class="c1"># Subplot settings</span>
     <span class="n">showlegend</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
@@ -572,8 +575,12 @@ document.write(`
             <span class="p">)</span>
             <span class="n">showlegend</span> <span class="o">=</span> <span class="kc">False</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;Visualisatie 1: CO2-uitstoot door personenauto&#39;s per land in de EU tussen 2015 en 2021&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;Visualisatie 1: CO2-uitstoot door personenauto&#39;s per land in de EU tussen 2015 en 2021&quot;</span><span class="p">,</span>
+    <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Jaar&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
 
 
 <span class="c1"># fig = go.Figure()</span>
@@ -616,7 +623,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot settings</span>
 <span class="n">rows</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">cols</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span> <span class="n">x_title</span><span class="o">=</span><span class="s2">&quot;Landcode&quot;</span><span class="p">,</span> <span class="n">y_title</span><span class="o">=</span><span class="s2">&quot;CO2 emissie in WLTP (g/km)&quot;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span> <span class="n">x_title</span><span class="o">=</span><span class="s2">&quot;Landcode&quot;</span><span class="p">,</span> <span class="n">y_title</span><span class="o">=</span><span class="s2">&quot;CO2 emissie reductie in WLTP (g/km)&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">2017</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">]:</span>
     <span class="c1"># Find index of &#39;IE&#39; to split the countries on (&#39;IE&#39; is often in the middle).</span>
@@ -686,10 +693,30 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute pie chart with average CO2 emission per fuel type.</span>
-<span class="n">ft_mean_emission</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">co2_2021</span><span class="p">[</span><span class="s2">&quot;Ft&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">())[</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">ft_mean_emission</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">co2_2021</span><span class="p">[</span><span class="s2">&quot;Ft&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">})</span>
+<span class="c1"># ft_mean_emission = co2_2021.groupby(co2_2021[&quot;Ft&quot;])[&quot;Ewltp (g/km)&quot;].mean()</span>
+<span class="n">ft_mean_emission</span> <span class="o">=</span> <span class="n">ft_mean_emission</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">to_csv</span><span class="p">:</span>
     <span class="n">ft_mean_emission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;ft_mean_emission.csv&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ft_mean_emission</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                 Ewltp (g/km)
+Ft                           
+e85                159.597920
+diesel             144.489682
+petrol             134.432168
+other              123.094150
+lpg                121.112130
+ng-biomethane      113.262629
+ng                 104.922170
+petrol-electric     41.888312
+diesel-electric     39.109638
+electric             0.000000
 </pre></div>
 </div>
 </div>
@@ -700,6 +727,7 @@ document.write(`
 <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">ft_mean_emission</span><span class="p">,</span>
     <span class="n">names</span><span class="o">=</span><span class="n">ft_mean_emission</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
     <span class="n">values</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">ft_mean_emission</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;CO2 emission by fuel type in 2021&quot;</span><span class="p">,</span>
     <span class="n">hole</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
     <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
@@ -708,6 +736,38 @@ document.write(`
 <span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">textposition</span><span class="o">=</span><span class="s1">&#39;outside&#39;</span><span class="p">,</span> <span class="n">textinfo</span><span class="o">=</span><span class="s2">&quot;label + percent&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">updatemenus</span><span class="o">=</span><span class="p">[</span>
+        <span class="nb">dict</span><span class="p">(</span>
+            <span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;buttons&quot;</span><span class="p">,</span>
+            <span class="n">direction</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
+            <span class="n">buttons</span><span class="o">=</span><span class="nb">list</span><span class="p">([</span>
+                <span class="nb">dict</span><span class="p">(</span>
+                    <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;pie&quot;</span><span class="p">],</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Pie&quot;</span><span class="p">,</span>
+                    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;restyle&quot;</span>
+                <span class="p">),</span>
+                <span class="nb">dict</span><span class="p">(</span>
+                    <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">],</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Bar&quot;</span><span class="p">,</span>
+                    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;restyle&quot;</span>
+                <span class="p">)</span>
+            <span class="p">]),</span>
+            <span class="n">showactive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">x</span><span class="o">=</span><span class="mf">0.11</span><span class="p">,</span>
+            <span class="n">xanchor</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="mf">1.15</span><span class="p">,</span>
+            <span class="n">yanchor</span><span class="o">=</span><span class="s2">&quot;top&quot;</span>
+        <span class="p">),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Add annotation</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Trace type:&quot;</span><span class="p">,</span> <span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.12</span><span class="p">,</span> <span class="n">yref</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -761,17 +821,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_37088/2340945451.py:5: DtypeWarning:
-
-Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
-
-/tmp/ipykernel_37088/2340945451.py:5: DtypeWarning:
-
-Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -800,29 +849,40 @@ Columns (0) have mixed types. Specify dtype option on import or set low_memory=F
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lijst om de resultaten in op te slaan</span>
-<span class="n">counts_results</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1"># Itereer over elke chunk</span>
-<span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;CO2_data.csv&quot;</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1000000</span><span class="p">):</span>
-    <span class="c1"># Classificeer elektrische en hybride auto&#39;s als &#39;Elektrisch&#39;, en alle anderen als &#39;Anders&#39;</span>
-    <span class="n">chunk</span><span class="p">[</span><span class="s1">&#39;Ft&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chunk</span><span class="p">[</span><span class="s1">&#39;Ft&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;Elektrisch&#39;</span> <span class="k">if</span> <span class="s1">&#39;electric&#39;</span> <span class="ow">in</span> <span class="n">x</span> <span class="ow">or</span> <span class="s1">&#39;hybrid&#39;</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">else</span> <span class="s1">&#39;Anders&#39;</span><span class="p">)</span>
-    
-    <span class="c1"># Doe de berekeningen</span>
-    <span class="n">count_result</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;Ft&#39;</span><span class="p">],</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;counts&#39;</span><span class="p">)</span>
-    <span class="c1"># Voeg het resultaat toe aan de lijst</span>
-    <span class="n">counts_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count_result</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">co2_2021</span><span class="p">[</span><span class="s2">&quot;Ft&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_37088/4033288453.py:5: DtypeWarning:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;petrol-electric&#39; &#39;diesel&#39; &#39;electric&#39; &#39;diesel-electric&#39; &#39;petrol&#39; &#39;ng&#39;
+ &#39;lpg&#39; &#39;ng-biomethane&#39; &#39;other&#39; &#39;e85&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lijst om de resultaten in op te slaan</span>
+<span class="n">counts_results</span> <span class="o">=</span> <span class="p">[]</span>
 
-Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
+<span class="k">def</span> <span class="nf">classify_electric</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">&quot;-electric&quot;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Semi-Elektrisch&quot;</span>
+    <span class="k">elif</span> <span class="s2">&quot;electric&quot;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Elektrisch&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Anders&quot;</span>
 
-/tmp/ipykernel_37088/4033288453.py:5: DtypeWarning:
+<span class="c1"># Itereer over elke chunk</span>
+<span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;CO2_data.csv&quot;</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1000000</span><span class="p">):</span>
+    <span class="c1"># Classificeer elektrische en hybride auto&#39;s als &#39;Elektrisch&#39;, en alle anderen als &#39;Anders&#39;</span>
+    <span class="n">chunk</span><span class="p">[</span><span class="s1">&#39;Ft&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chunk</span><span class="p">[</span><span class="s1">&#39;Ft&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">classify_electric</span><span class="p">)</span>
+    <span class="c1"># chunk[&#39;Ft&#39;] = chunk[&#39;Ft&#39;].apply(lambda x: &#39;Elektrisch&#39; if &#39;electric&#39; in x or &#39;hybrid&#39; in x else &#39;Anders&#39;)</span>
 
-Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
+    <span class="c1"># Doe de berekeningen</span>
+    <span class="n">count_result</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;Ft&#39;</span><span class="p">],</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;counts&#39;</span><span class="p">)</span>
+    <span class="c1"># Voeg het resultaat toe aan de lijst</span>
+    <span class="n">counts_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count_result</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -847,38 +907,55 @@ Columns (0) have mixed types. Specify dtype option on import or set low_memory=F
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    year          Ft    counts       sum    percent
-0   2015      Anders    415525    419642  99.018926
-1   2015  Elektrisch      4117    419642   0.981074
-2   2016      Anders    473778    479015  98.906715
-3   2016  Elektrisch      5237    479015   1.093285
-4   2017      Anders   4860566   4936747  98.456858
-5   2017  Elektrisch     76181   4936747   1.543142
-6   2018      Anders  14600310  14900305  97.986652
-7   2018  Elektrisch    299995  14900305   2.013348
-8   2019      Anders   7996139   9864373  81.060793
-9   2019  Elektrisch   1868234   9864373  18.939207
-10  2020      Anders   7996139   9864373  81.060793
-11  2020  Elektrisch   1868234   9864373  18.939207
-12  2021      Anders   7996139   9864373  81.060793
-13  2021  Elektrisch   1868234   9864373  18.939207
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    year               Ft    counts       sum    percent
+0   2015           Anders    415321    419369  99.034740
+1   2015       Elektrisch      1899    419369   0.452823
+2   2015  Semi-Elektrisch      2149    419369   0.512437
+3   2016           Anders    473519    478728  98.911908
+4   2016       Elektrisch      2452    478728   0.512191
+5   2016  Semi-Elektrisch      2757    478728   0.575901
+6   2017           Anders   4859439   4935537  98.458162
+7   2017       Elektrisch     43266   4935537   0.876622
+8   2017  Semi-Elektrisch     32832   4935537   0.665216
+9   2018           Anders  14598778  14898362  97.989148
+10  2018       Elektrisch    148184  14898362   0.994633
+11  2018  Semi-Elektrisch    151400  14898362   1.016219
+12  2019           Anders   7975216   9793017  81.437784
+13  2019       Elektrisch    980563   9793017  10.012880
+14  2019  Semi-Elektrisch    837238   9793017   8.549337
+15  2020           Anders   7975216   9793017  81.437784
+16  2020       Elektrisch    980563   9793017  10.012880
+17  2020  Semi-Elektrisch    837238   9793017   8.549337
+18  2021           Anders   7975216   9793017  81.437784
+19  2021       Elektrisch    980563   9793017  10.012880
+20  2021  Semi-Elektrisch    837238   9793017   8.549337
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definieer kleuren voor de brandstoftypes</span>
-<span class="n">unique_ft</span> <span class="o">=</span> <span class="n">df_counts</span><span class="p">[</span><span class="s1">&#39;Ft&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span> <span class="k">if</span> <span class="n">ft</span> <span class="o">==</span> <span class="s1">&#39;Elektrisch&#39;</span> <span class="k">else</span> <span class="s1">&#39;grey&#39;</span> <span class="k">for</span> <span class="n">ft</span> <span class="ow">in</span> <span class="n">unique_ft</span><span class="p">]</span>
-<span class="n">color_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">unique_ft</span><span class="p">,</span> <span class="n">colors</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definieer kleuren voor de brandstof types</span>
+<span class="n">colormap</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Elektrisch&quot;</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;Semi-Elektrisch&quot;</span><span class="p">:</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;Anders&quot;</span><span class="p">:</span> <span class="s1">&#39;grey&#39;</span><span class="p">,</span>
+<span class="p">}</span>
 
-<span class="c1"># Maak het percentage staafdiagram</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df_counts</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;percent&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Ft&quot;</span><span class="p">,</span> 
-             <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Fuel Type Distribution (2017-2021)&quot;</span><span class="p">,</span> 
-             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;percent&#39;</span><span class="p">:</span><span class="s1">&#39;Percentage of Cars&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Ft&#39;</span><span class="p">:</span><span class="s1">&#39;Fuel Type&#39;</span><span class="p">},</span> 
-             <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;counts&#39;</span><span class="p">],</span> 
-             <span class="n">color_discrete_map</span><span class="o">=</span><span class="n">color_dict</span><span class="p">)</span> <span class="c1"># Gebruik de kleurenkaart</span>
+<span class="c1"># Plot settings</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df_counts</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;percent&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Ft&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Brandstof type distributie van personenauto&#39;s in de EU tussen 2015 en 2021&quot;</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;percent&quot;</span><span class="p">:</span> <span class="s2">&quot;Percentage van alle personenauto&#39;s&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="s1">&#39;Jaar&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Ft&quot;</span><span class="p">:</span> <span class="s1">&#39;Brandstof type&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;counts&#39;</span><span class="p">],</span>
+    <span class="n">color_discrete_map</span><span class="o">=</span><span class="n">colormap</span>  <span class="c1"># Gebruik de kleurenkaart</span>
+<span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -929,6 +1006,87 @@ Columns (0) have mixed types. Specify dtype option on import or set low_memory=F
 9         electric           0.0   980563
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute data for emission per brand per year.</span>
+<span class="n">make_emission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">co2_2015</span><span class="p">,</span> <span class="n">co2_2016</span><span class="p">,</span> <span class="n">co2_2017</span><span class="p">,</span> <span class="n">co2_2018</span><span class="p">,</span> <span class="n">co2_2019</span><span class="p">,</span> <span class="n">co2_2020</span><span class="p">,</span> <span class="n">co2_2021</span><span class="p">]:</span>
+    <span class="c1"># Get subset of columns.</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;Mk&quot;</span><span class="p">,</span> <span class="s2">&quot;Ft&quot;</span><span class="p">,</span> <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">]]</span>
+    <span class="c1"># Group by year and brand and compute mean.</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;Mk&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s2">&quot;Ft&quot;</span><span class="p">:</span> <span class="s1">&#39;first&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">make_emission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">make_emission</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">make_emission</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     year            Mk  Ewltp (g/km)               Ft
+0    2015    Alfa Romeo    158.938858           diesel
+1    2015        Alpina    233.141509           petrol
+2    2015  Aston Martin    410.137643           petrol
+3    2015          Audi    177.115525           petrol
+4    2015           BMW    179.843678           diesel
+..    ...           ...           ...              ...
+490  2021           UAZ    276.000000           petrol
+491  2021    Volkswagen    118.445517           diesel
+492  2021         Volvo    110.584278  petrol-electric
+493  2021            ZD      0.000000         electric
+494  2021         Škoda    126.702169           petrol
+
+[495 rows x 4 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">car_emission_mass</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">car_emission_mass</span> <span class="o">=</span> <span class="n">car_emission_mass</span><span class="p">[[</span><span class="s2">&quot;Ft&quot;</span><span class="p">,</span> <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span> <span class="s2">&quot;m (kg)&quot;</span><span class="p">]]</span>
+<span class="n">car_emission_mass</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;car_emission_mass.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot settings</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">car_emission_mass</span><span class="p">,</span>
+	<span class="n">x</span><span class="o">=</span><span class="s2">&quot;m (kg)&quot;</span><span class="p">,</span>
+	<span class="n">y</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span>
+	<span class="n">color</span><span class="o">=</span><span class="s2">&quot;Ft&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Create toggle visibility button for every fuel type.</span>
+<span class="n">buttons</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">car_emission_mass</span><span class="p">[</span><span class="s2">&quot;Ft&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="n">button</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;restyle&#39;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">val</span><span class="p">,</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;visible&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="p">[</span><span class="n">i</span><span class="p">]],</span>
+        <span class="n">args2</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;visible&#39;</span><span class="p">:</span> <span class="s2">&quot;legendonly&quot;</span><span class="p">},</span> <span class="p">[</span><span class="n">i</span><span class="p">]],</span>
+    <span class="p">)</span>
+    <span class="n">buttons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+
+<span class="c1"># Menu settings</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">updatemenus</span><span class="o">=</span><span class="p">[</span>
+        <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">buttons</span><span class="o">=</span><span class="n">buttons</span><span class="p">,</span>
+            <span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">],</span>
+    <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Toggle traces by clicking the legend&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xref</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">,</span> <span class="n">yref</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="p">],</span>
+    <span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;A really interesting title&quot;</span><span class="p">,</span>
+    <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Brandstof type&quot;</span><span class="p">,</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Gewicht (kg)&quot;</span><span class="p">,</span>
+    <span class="n">xaxis_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3500</span><span class="p">),</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;CO2 emissie in WLTP (g/km)&quot;</span><span class="p">,</span>
+    <span class="n">yaxis_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">550</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 </div>
 </div>
 </section>
