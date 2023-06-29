@@ -198,37 +198,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/FuYoshi/data_story_project/blob/main/docs/docs/test.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onColab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img src="../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -398,7 +367,7 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the big dataset in chunks.</span>
 <span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">1000000</span>
@@ -491,7 +460,7 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute data for bar graph with average CO2 emission per country</span>
 <span class="n">country_emission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -529,7 +498,7 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot settings</span>
 <span class="n">rows</span> <span class="o">=</span> <span class="mi">2</span>
@@ -571,7 +540,7 @@ document.write(`
 <div class="cell_output docutils container">
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot settings</span>
 <span class="n">rows</span> <span class="o">=</span> <span class="mi">2</span>
@@ -612,7 +581,7 @@ document.write(`
 <div class="cell_output docutils container">
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute pie chart with average CO2 emission per fuel type.</span>
 <span class="n">ft_mean_emission</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">co2_2021</span><span class="p">[</span><span class="s2">&quot;Ft&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">})</span>
@@ -643,7 +612,7 @@ electric             0.000000
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot pie chart with average CO2 emission per fuel type.</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">ft_mean_emission</span><span class="p">,</span>
@@ -697,7 +666,7 @@ electric             0.000000
 <div class="cell_output docutils container">
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">specs</span><span class="o">=</span><span class="p">[[{</span><span class="s2">&quot;secondary_y&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}]])</span>
 
@@ -729,7 +698,7 @@ electric             0.000000
 <div class="cell_output docutils container">
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lijst om de resultaten in op te slaan</span>
 <span class="n">counts_results</span> <span class="o">=</span> <span class="p">[]</span>
@@ -756,7 +725,7 @@ electric             0.000000
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Concateneer alle resultaten in een dataframe</span>
 <span class="n">df_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">counts_results</span><span class="p">)</span>
@@ -804,7 +773,7 @@ electric             0.000000
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definieer kleuren voor de brandstof types</span>
 <span class="n">colormap</span> <span class="o">=</span> <span class="p">{</span>
@@ -834,7 +803,7 @@ electric             0.000000
 <div class="cell_output docutils container">
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_emission_per_ft</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Ft&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">]})</span>
 <span class="n">total_emission_per_ft</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">total_emission_per_ft</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -880,7 +849,7 @@ electric             0.000000
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute data for emission per brand per year.</span>
 <span class="n">make_emission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -913,7 +882,7 @@ electric             0.000000
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">car_emission_mass</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">car_emission_mass</span> <span class="o">=</span> <span class="n">car_emission_mass</span><span class="p">[[</span><span class="s2">&quot;Ft&quot;</span><span class="p">,</span> <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span> <span class="s2">&quot;m (kg)&quot;</span><span class="p">]]</span>
@@ -962,7 +931,7 @@ electric             0.000000
 <div class="cell_output docutils container">
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">car_emission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;car_emission.csv&quot;</span><span class="p">)</span>
 <span class="n">df_split</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array_split</span><span class="p">(</span><span class="n">car_emission</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
