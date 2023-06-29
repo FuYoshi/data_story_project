@@ -31,7 +31,7 @@ html:
 # Add launch buttons
 launch_buttons:
   binderhub_url: ""
-  colab_url: "https://colab.research.google.com"
+  colab_url: ""
   jupyterhub_url: ""
 
 sphinx:
