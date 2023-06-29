@@ -599,71 +599,6 @@ the dataset being very large.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute pie chart with average CO2 emission per fuel type.</span>
-<span class="n">ft_mean_emission</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">co2_2021</span><span class="p">[</span><span class="s2">&quot;Ft&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">})</span>
-<span class="c1"># ft_mean_emission = co2_2021.groupby(co2_2021[&quot;Ft&quot;])[&quot;Ewltp (g/km)&quot;].mean()</span>
-<span class="n">ft_mean_emission</span> <span class="o">=</span> <span class="n">ft_mean_emission</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="n">to_csv</span><span class="p">:</span>
-    <span class="n">ft_mean_emission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;ft_mean_emission.csv&quot;</span><span class="p">)</span>
-
-<span class="n">ft_mean_emission</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Ewltp (g/km)</th>
-    </tr>
-    <tr>
-      <th>Ft</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>e85</th>
-      <td>159.597920</td>
-    </tr>
-    <tr>
-      <th>diesel</th>
-      <td>144.489682</td>
-    </tr>
-    <tr>
-      <th>petrol</th>
-      <td>134.432168</td>
-    </tr>
-    <tr>
-      <th>other</th>
-      <td>123.094150</td>
-    </tr>
-    <tr>
-      <th>lpg</th>
-      <td>121.112130</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lijst om de resultaten in op te slaan</span>
 <span class="n">counts_results</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -895,34 +830,34 @@ the dataset being very large.</p>
   </thead>
   <tbody>
     <tr>
-      <th>1276194</th>
-      <td>lpg</td>
-      <td>115.0</td>
-      <td>1251.0</td>
-    </tr>
-    <tr>
-      <th>5445664</th>
+      <th>9536365</th>
       <td>petrol</td>
-      <td>192.0</td>
-      <td>1522.0</td>
+      <td>132.0</td>
+      <td>1267.0</td>
     </tr>
     <tr>
-      <th>1134590</th>
-      <td>diesel</td>
-      <td>145.0</td>
-      <td>1680.0</td>
+      <th>7738871</th>
+      <td>electric</td>
+      <td>0.0</td>
+      <td>1602.0</td>
     </tr>
     <tr>
-      <th>5432494</th>
-      <td>diesel</td>
-      <td>130.0</td>
-      <td>1405.0</td>
+      <th>3964624</th>
+      <td>petrol-electric</td>
+      <td>76.0</td>
+      <td>2370.0</td>
     </tr>
     <tr>
-      <th>8788529</th>
+      <th>9620823</th>
       <td>petrol</td>
-      <td>121.0</td>
-      <td>1322.0</td>
+      <td>109.0</td>
+      <td>1510.0</td>
+    </tr>
+    <tr>
+      <th>4246803</th>
+      <td>petrol</td>
+      <td>165.0</td>
+      <td>1650.0</td>
     </tr>
   </tbody>
 </table>
