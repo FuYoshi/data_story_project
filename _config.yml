@@ -8,7 +8,7 @@ author: Group G4 # Change this to your name (or your team/organization name).
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: force
-  timeout: 300
+  timeout: 150
 
 # Define the name of the latex output file for PDF builds
 latex:

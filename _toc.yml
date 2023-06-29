@@ -3,6 +3,6 @@
 
 format: jb-book
 root: docs/story
-# chapters:
-# - file: docs/test
+chapters:
+- file: docs/test
 # - file: docs/notebook
