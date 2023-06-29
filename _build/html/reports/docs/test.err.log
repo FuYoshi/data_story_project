@@ -32,7 +32,7 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['# Retrieve dataset data.', 'chunk_size = 1000000', 'dtypes = {"Country": str, "Mk": str, "Cn": str, "m (kg)": float, "Enedc (g/km)": float, "Ewltp (g/km)": float, "W (mm)": float, "Ft": str, "Ernedc (g/km)": float, "Erwltp (g/km)": float, "year": int}', 'chunk_container = pd.read_csv("CO2_data.csv", dtype=dtypes, chunksize=chunk_size)', '']
+['# Read the big dataset in chunks.', 'chunk_size = 1000000', 'dtypes = {"Country": str, "Mk": str, "Cn": str, "m (kg)": float, "Enedc (g/km)": float, "Ewltp (g/km)": float, "W (mm)": float, "Ft": str, "Ernedc (g/km)": float, "Erwltp (g/km)": float, "year": int}', 'chunk_container = pd.read_csv("CO2_data.csv", dtype=dtypes, chunksize=chunk_size)', '']
 ...
 ['    co2_2018 = pd.concat([co2_2018, chunk[chunk["year"] == 2018]], ignore_index=True)', '    co2_2019 = pd.concat([co2_2019, chunk[chunk["year"] == 2019]], ignore_index=True)', '    co2_2020 = pd.concat([co2_2020, chunk[chunk["year"] == 2020]], ignore_index=True)', '    co2_2021 = pd.concat([co2_2021, chunk[chunk["year"] == 2021]], ignore_index=True)', 'co2_2021.head()']
 -------------------
