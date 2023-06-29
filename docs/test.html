@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Test Notebook &#8212; Data Story Project</title>
+    <title>Data Preprocessing &#8212; Data Story Project</title>
   
   
   
@@ -65,6 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/test';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="CO2-uitstoot van auto’s in de Europese Unie: Tussen afname en de noodzaak tot verdere reductie" href="story.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -149,7 +150,10 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Preprocessing</a></li>
+</ul>
+
     </div>
 </nav></div>
     </div>
@@ -349,9 +353,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -362,23 +364,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Test Notebook</h1>
+    <h1>Data Preprocessing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Test Notebook</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-and-preprocessing">Dataset and preprocessing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#links">Links</a></li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -388,13 +378,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="test-notebook">
-<h1>Test Notebook<a class="headerlink" href="#test-notebook" title="Permalink to this heading">#</a></h1>
-<p>This notebooks exists to create the csv files for the plots. You may find concept visualizations that did not make it into the data story</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
-<!--  -->TODO: describe topic and perspectives
+  <section class="tex2jax_ignore mathjax_ignore" id="data-preprocessing">
+<h1>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this heading">#</a></h1>
+<p>Student namen: Laiba Shamsul, Popke Snoek, Yoshi Fu, Pepeyn Velthuijse</p>
+<p>Team nummer: G4</p>
+<p>The following code is used to preprocess the datasets into files that are used for the data story. Note that it requires the dataset to be downloaded and inserted into the same folder as this notebook. You may find visualizations that did not make it into the actual data story.</p>
+<p>The entire cleaned dataset can be downloaded from: <a class="reference external" href="https://drive.google.com/file/d/1sTGPzVfk017Y8n2KPgsIxP9eXdl02YgH/view">https://drive.google.com/file/d/1sTGPzVfk017Y8n2KPgsIxP9eXdl02YgH/view</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
@@ -409,12 +398,13 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieve dataset data.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the big dataset in chunks.</span>
 <span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="n">dtypes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Country&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Mk&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Cn&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;m (kg)&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Enedc (g/km)&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;W (mm)&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Ft&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Ernedc (g/km)&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Erwltp (g/km)&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">}</span>
 <span class="n">chunk_container</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;CO2_data.csv&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">)</span>
 
-<span class="c1"># The dataset is very large, split it by year. This makes it possible to only see results of 2021 fast.</span>
+<span class="c1"># Split the dataset by year. </span>
+<span class="c1"># This ensures that the kernel does not die due to memory shortage and some plots only require data of 2021.</span>
 <span class="n">co2_2015</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">co2_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">co2_2017</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -436,13 +426,13 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ParserError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">co2_2020</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">co2_2021</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunk_container</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">co2_2015</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2015</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2015</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">co2_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2016</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2016</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">co2_2020</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">co2_2021</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">15</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunk_container</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">co2_2015</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2015</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2015</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">co2_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">co2_2016</span><span class="p">,</span> <span class="n">chunk</span><span class="p">[</span><span class="n">chunk</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2016</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1624,</span> in <span class="ni">TextFileReader.__next__</span><span class="nt">(self)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1622</span> <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
@@ -479,23 +469,36 @@ document.write(`
 
 <span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/_libs/parsers.pyx:824,</span> in <span class="ni">pandas._libs.parsers.TextReader.read_low_memory</span><span class="nt">()</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/_libs/parsers.pyx:873,</span> in <span class="ni">pandas._libs.parsers.TextReader._read_rows</span><span class="nt">()</span>
+<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/_libs/parsers.pyx:889,</span> in <span class="ni">pandas._libs.parsers.TextReader._read_rows</span><span class="nt">()</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/_libs/parsers.pyx:848,</span> in <span class="ni">pandas._libs.parsers.TextReader._tokenize_rows</span><span class="nt">()</span>
+<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/_libs/parsers.pyx:1034,</span> in <span class="ni">pandas._libs.parsers.TextReader._convert_column_data</span><span class="nt">()</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/_libs/parsers.pyx:859,</span> in <span class="ni">pandas._libs.parsers.TextReader._check_tokenize_status</span><span class="nt">()</span>
+<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/_libs/parsers.pyx:1073,</span> in <span class="ni">pandas._libs.parsers.TextReader._convert_tokens</span><span class="nt">()</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/_libs/parsers.pyx:2025,</span> in <span class="ni">pandas._libs.parsers.raise_parser_error</span><span class="nt">()</span>
+<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/_libs/parsers.pyx:1163,</span> in <span class="ni">pandas._libs.parsers.TextReader._convert_with_dtype</span><span class="nt">()</span>
 
-<span class="ne">ParserError</span>: Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine=&#39;python&#39;.
+<span class="nn">File ~/miniconda3/lib/python3.10/site-packages/pandas/core/dtypes/common.py:1335,</span> in <span class="ni">is_extension_array_dtype</span><span class="nt">(arr_or_dtype)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1326</span>     <span class="c1"># Note: if other EA dtypes are ever held in HybridBlock, exclude those</span>
+<span class="g g-Whitespace">   </span><span class="mi">1327</span>     <span class="c1">#  here too.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1328</span>     <span class="c1"># NB: need to check DatetimeTZDtype and not is_datetime64tz_dtype</span>
+<span class="g g-Whitespace">   </span><span class="mi">1329</span>     <span class="c1">#  to exclude ArrowTimestampUSDtype</span>
+<span class="g g-Whitespace">   </span><span class="mi">1330</span>     <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">ExtensionDtype</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1331</span>         <span class="n">dtype</span><span class="p">,</span> <span class="p">(</span><span class="n">DatetimeTZDtype</span><span class="p">,</span> <span class="n">PeriodDtype</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1332</span>     <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1335</span> <span class="k">def</span> <span class="nf">is_extension_array_dtype</span><span class="p">(</span><span class="n">arr_or_dtype</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1336</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1337</span><span class="sd">     Check if an object is a pandas extension array type.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1338</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1378</span><span class="sd">     False</span>
+<span class="g g-Whitespace">   </span><span class="mi">1379</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1380</span>     <span class="n">dtype</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">arr_or_dtype</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">,</span> <span class="n">arr_or_dtype</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="dataset-and-preprocessing">
-<h1>Dataset and preprocessing<a class="headerlink" href="#dataset-and-preprocessing" title="Permalink to this heading">#</a></h1>
-<!--  -->TODO: describe dataset and how we preprocess them
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set to true to convert data to csv. False otherwise.</span>
@@ -514,7 +517,6 @@ document.write(`
     <span class="c1"># Group by country and year and compute mean and std.</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">],</span> <span class="s2">&quot;Erwltp (g/km)&quot;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
     <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-    <span class="c1"># df = df.groupby([&quot;Country&quot;, &quot;year&quot;]).mean().reset_index()</span>
     <span class="n">country_emission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">country_emission</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">to_csv</span><span class="p">:</span>
@@ -585,7 +587,6 @@ document.write(`
 <div class="cell_output docutils container">
 </div>
 </div>
-<p>Caption</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot settings</span>
@@ -974,12 +975,6 @@ electric             0.000000
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="links">
-<h1>Links<a class="headerlink" href="#links" title="Permalink to this heading">#</a></h1>
-<p>Cleaned dataset: <a class="reference external" href="https://www.kaggle.com/datasets/yoshifu/co2-emission-from-cars-2015-2021">https://www.kaggle.com/datasets/yoshifu/co2-emission-from-cars-2015-2021</a></p>
-<p>GitHub repository: <a class="github reference external" href="https://github.com/FuYoshi/data_story_project">FuYoshi/data_story_project</a></p>
-<p>Original dataset: <a class="reference external" href="https://www.eea.europa.eu/data-and-maps/data/co2-cars-emission-18">https://www.eea.europa.eu/data-and-maps/data/co2-cars-emission-18</a></p>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1012,6 +1007,15 @@ electric             0.000000
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="story.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CO2-uitstoot van auto’s in de Europese Unie: Tussen afname en de noodzaak tot verdere reductie</p>
+      </div>
+    </a>
 </div></div>
   
 </div>
@@ -1021,24 +1025,6 @@ electric             0.000000
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Test Notebook</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-and-preprocessing">Dataset and preprocessing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#links">Links</a></li>
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
