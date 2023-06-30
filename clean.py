@@ -55,12 +55,12 @@ car_placeholders = {
 }
 chunk_size = 1000000
 csv_file_list = [
-    # "docs/CO2_2015.csv",
-    # "docs/CO2_2016.csv",
-    # "docs/CO2_2017.csv",
-    # "docs/CO2_2018.csv",
-    # "docs/CO2_2019.csv",
-    # "docs/CO2_2020.csv",
+    "docs/CO2_2015.csv",
+    "docs/CO2_2016.csv",
+    "docs/CO2_2017.csv",
+    "docs/CO2_2018.csv",
+    "docs/CO2_2019.csv",
+    "docs/CO2_2020.csv",
     "docs/CO2_2021.csv",
 ]
 output_file = "docs/CO2_data.csv"
