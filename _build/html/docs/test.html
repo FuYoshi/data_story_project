@@ -351,11 +351,8 @@ document.write(`
 <h1>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this heading">#</a></h1>
 <p>Student namen: Laiba Shamsul, Popke Snoek, Yoshi Fu, Pepeyn Velthuijse</p>
 <p>Team nummer: G4</p>
-<p>The following code is used to preprocess the datasets into files that are used for the data story. The kernel might die due to
-the dataset being very large.</p>
-<p>Note that it requires the dataset to be downloaded and inserted into the same folder as this notebook. You may find visualizations that did not make it into the actual data story. The dataset is too big to put on git, git lfs or for pandas.read_csv() to read using a share link on google drive/onedrive.</p>
-<p>The entire cleaned dataset can be downloaded from: <a class="reference external" href="https://drive.google.com/file/d/1sTGPzVfk017Y8n2KPgsIxP9eXdl02YgH/view">https://drive.google.com/file/d/1sTGPzVfk017Y8n2KPgsIxP9eXdl02YgH/view</a></p>
-<p>If you want to see the code that made the cleaned dataset, then look at the ‘<a class="reference external" href="http://clean.py">clean.py</a>’ file in the github repository. <a class="github reference external" href="https://github.com/FuYoshi/data_story_project">FuYoshi/data_story_project</a></p>
+<p>Hieronder is de code weergegeven dat is gebruikt om de gefilterde dataset te verwerken naar bestanden die in de data story worden gebruikt.</p>
+<p>We verwijzen naar de GitHub repository om de code te zien waarmee de verschillende originele datasets zijn samengevoegd. De code is te vinden in het Python bestand ‘<a class="reference external" href="http://clean.py">clean.py</a>’. <a class="github reference external" href="https://github.com/FuYoshi/data_story_project">FuYoshi/data_story_project</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
@@ -718,7 +715,8 @@ the dataset being very large.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_emission_per_ft</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Ft&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">]})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute total emission for each fuel type.</span>
+<span class="n">total_emission_per_ft</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Ft&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">]})</span>
 <span class="n">total_emission_per_ft</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">total_emission_per_ft</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 <span class="n">total_emission_per_ft</span> <span class="o">=</span> <span class="n">total_emission_per_ft</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
     <span class="s2">&quot;Ewltp (g/km) sum&quot;</span><span class="p">:</span> <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span>
@@ -794,7 +792,9 @@ the dataset being very large.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">car_emission_mass</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a random sample of cars in 2021. Get their emission and mass.</span>
+<span class="c1"># We take a random sample because there is so much data that the site becomes slow otherwise.</span>
+<span class="n">car_emission_mass</span> <span class="o">=</span> <span class="n">co2_2021</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">car_emission_mass</span> <span class="o">=</span> <span class="n">car_emission_mass</span><span class="p">[[</span><span class="s2">&quot;Ft&quot;</span><span class="p">,</span> <span class="s2">&quot;Ewltp (g/km)&quot;</span><span class="p">,</span> <span class="s2">&quot;m (kg)&quot;</span><span class="p">]]</span>
 
 <span class="k">if</span> <span class="n">to_csv</span><span class="p">:</span>
@@ -830,34 +830,34 @@ the dataset being very large.</p>
   </thead>
   <tbody>
     <tr>
-      <th>9536365</th>
+      <th>119630</th>
+      <td>diesel</td>
+      <td>128.0</td>
+      <td>1576.0</td>
+    </tr>
+    <tr>
+      <th>7062371</th>
       <td>petrol</td>
-      <td>132.0</td>
-      <td>1267.0</td>
+      <td>123.0</td>
+      <td>1280.0</td>
     </tr>
     <tr>
-      <th>7738871</th>
-      <td>electric</td>
-      <td>0.0</td>
-      <td>1602.0</td>
-    </tr>
-    <tr>
-      <th>3964624</th>
-      <td>petrol-electric</td>
-      <td>76.0</td>
-      <td>2370.0</td>
-    </tr>
-    <tr>
-      <th>9620823</th>
+      <th>1505641</th>
       <td>petrol</td>
-      <td>109.0</td>
-      <td>1510.0</td>
+      <td>110.0</td>
+      <td>915.0</td>
     </tr>
     <tr>
-      <th>4246803</th>
+      <th>422397</th>
+      <td>diesel</td>
+      <td>188.0</td>
+      <td>2165.0</td>
+    </tr>
+    <tr>
+      <th>361343</th>
       <td>petrol</td>
-      <td>165.0</td>
-      <td>1650.0</td>
+      <td>131.0</td>
+      <td>1325.0</td>
     </tr>
   </tbody>
 </table>
@@ -865,7 +865,8 @@ the dataset being very large.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bycarbrand_2015</span> <span class="o">=</span> <span class="n">co2_2015</span><span class="p">[[</span><span class="s1">&#39;Mk&#39;</span><span class="p">,</span><span class="s1">&#39;Cn&#39;</span><span class="p">,</span> <span class="s1">&#39;Ewltp (g/km)&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;Ft&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the emission per car brand</span>
+<span class="n">bycarbrand_2015</span> <span class="o">=</span> <span class="n">co2_2015</span><span class="p">[[</span><span class="s1">&#39;Mk&#39;</span><span class="p">,</span><span class="s1">&#39;Cn&#39;</span><span class="p">,</span> <span class="s1">&#39;Ewltp (g/km)&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;Ft&#39;</span><span class="p">]]</span>
 <span class="n">bycarbrand_2016</span> <span class="o">=</span> <span class="n">co2_2016</span><span class="p">[[</span><span class="s1">&#39;Mk&#39;</span><span class="p">,</span><span class="s1">&#39;Cn&#39;</span><span class="p">,</span> <span class="s1">&#39;Ewltp (g/km)&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;Ft&#39;</span><span class="p">]]</span>
 <span class="n">bycarbrand_2017</span> <span class="o">=</span> <span class="n">co2_2017</span><span class="p">[[</span><span class="s1">&#39;Mk&#39;</span><span class="p">,</span><span class="s1">&#39;Cn&#39;</span><span class="p">,</span> <span class="s1">&#39;Ewltp (g/km)&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;Ft&#39;</span><span class="p">]]</span>
 <span class="n">bycarbrand_2018</span> <span class="o">=</span> <span class="n">co2_2018</span><span class="p">[[</span><span class="s1">&#39;Mk&#39;</span><span class="p">,</span><span class="s1">&#39;Cn&#39;</span><span class="p">,</span> <span class="s1">&#39;Ewltp (g/km)&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;Ft&#39;</span><span class="p">]]</span>
